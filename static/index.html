@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/static/javascript.js"></script>
+</head>
+<body>
+    <header id="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <img class="logo" src="/assets/logo-dark.svg">
+            </div>
+            <div class="header-center">
+                <form>
+                    <input type="text" name="search" class="search" placeholder="Search...">
+                </form>
+            </div>
+            <div class="header-right">
+                <img class="avatar" data-tooltip-content="#account-menu" src="/assets/avatar.jpeg">
+                <div id="account-menu">
+                    <ul>
+                        <li><a href=""><i class="material-icons-sharp">settings</i>Preferences</a></li>
+                        <li><a href=""><i class="material-icons-sharp">bar_chart</i>Statistics</a></li>
+                        <li><a href=""><i class="material-icons-sharp">exit_to_app</i>Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <section id="tasks">
+            <div class="task medium-priority">
+                <button class="task-checkbox"></button>
+                <h2 class="task-title">This is a testing task</h2>
+                <div class="task-meta">
+                    <span class="task-date">June 11 3:00 PM</span>
+                    <i class="material-icons-sharp">alarm</i>
+                    <div class="task-labels">
+                        <span class="task-label">Spanish</span>
+                        <span class="task-label">History</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

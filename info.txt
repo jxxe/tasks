@@ -1,0 +1,11 @@
+High Priority: #d0413b
+Medium Priority: #e9881c
+Low Priority: #f8d02a
+
+Red: #d0413b
+Orange: #e9881c
+Yellow: #f8d02a
+Green: #27963f
+Blue: #4c70f9
+Purple: #6b36be
+Gray: #e7e7e7
