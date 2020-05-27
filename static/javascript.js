@@ -1,3 +1,17 @@
+// Enable alert
+function enableAlert() {
+	$(".toggle-alert").text("alarm_on");
+	$(".toggle-alert").css("color", "black");
+	$('[name="alert"]').val("true");
+}
+
+// Disable alert
+function disableAlert() {
+	$(".toggle-alert").text("alarm_add");
+	$(".toggle-alert").css("color", "gray");
+	$('[name="alert"]').val("false");
+}
+	
 $(document).ready(function () {
 	$('#settings .settings-inner form').change(function(){
 		$.ajax({
@@ -66,10 +80,6 @@ $(document).ready(function () {
         $(".sidebar-outer").toggleClass("sidebar-shown");
     });
 
-    $('[name="task"]').click(function () {
-        $("#new-task .new-bottom").addClass("shown");
-    });
-
     $(window).resize(function () {
         if ($(window).width() > 750) {
             $(".sidebar-outer").show();
@@ -77,7 +87,7 @@ $(document).ready(function () {
     });
 
     $("#tasks").sortable({
-        // Make task list draggable
+		// Make task list draggable
         handle: $(".sort-handle"), // Only drag by handle
         placeholder: "sort-placeholder", // Class for placeholder
         start: function (e, ui) {
@@ -95,6 +105,7 @@ $(document).ready(function () {
                 },
             }).done(function (msg) {
                 console.log(msg);
+                console.log(tasks);
                 // reindex order on client side to match server side so additional actions will be synced
                 var i = 0; // Orders start at 0
                 $("#tasks .task").each(function () {
@@ -105,8 +116,8 @@ $(document).ready(function () {
         },
     });
 
+	// Complete Task
     $("#tasks").on("click", ".task .task-checkbox", function () {
-        // AJAX complete task
         var parent = $(this).parent().parent();
         $.ajax({
             method: "POST",
@@ -115,36 +126,21 @@ $(document).ready(function () {
                 id: parent.attr("data-id"),
             },
         });
-        parent.slideUp("fast", function () {
-            parent.remove();
+        parent.slideUp("fast", function () { // Animate hide
+            parent.remove(); // Remove from DOM
         });
     });
+});
 
-    $(".toggle-label").click(function () {
-        $(".label-selector").toggle();
+/* NEW TASK FORM */
 
-        if ($('[name="label"]:checkbox:checked').length > 0) {
-            $(".toggle-label").css("color", "black");
-        } else {
-            $(".toggle-label").css("color", "gray");
-        }
-
-        $(".toggle-project").show();
-        if ($('[name="project"]').val() !== "Inbox") {
-            $(".toggle-project").css("color", "black");
-        } else {
-            $(".toggle-project").css("color", "gray");
-        }
-        $(".toggle-due").show();
-        if ($('[name="due"]').val()) {
-            $(".toggle-due").css("color", "black");
-        } else {
-            $(".toggle-due").css("color", "gray");
-        }
-        $('[name="due"]').hide();
-        $('[name="project"]').hide();
+$(document).ready(function () {
+	// Show meta buttons
+	$('[name="task"]').click(function () {
+        $("#new-task .new-bottom").addClass("shown");
     });
 
+	// Project Selector
     $(".toggle-project").click(function () {
         $(this).hide();
         $('[name="project"]').show();
@@ -165,31 +161,7 @@ $(document).ready(function () {
         $(".label-selector").hide();
     });
 
-    function enableAlert() {
-        $(".toggle-alert").text("alarm_on");
-        $(".toggle-alert").css("color", "black");
-        $('[name="alert"]').val("true");
-    }
 
-    function disableAlert() {
-        $(".toggle-alert").text("alarm_add");
-        $(".toggle-alert").css("color", "gray");
-        $('[name="alert"]').val("false");
-    }
-
-    $('[name="due"]').datepicker({
-        onSelect: function () {
-            if ($('[name="due"]').val()) {
-                $(".toggle-due").css("color", "black");
-                $(".toggle-due").text("event_busy");
-                $(".toggle-alert").show();
-                enableAlert();
-            } else {
-                $(".toggle-due").css("color", "gray");
-                $(".toggle-due").text("insert_invitation");
-            }
-        },
-    });
 
     $(".toggle-due").click(function () {
         if ($('[name="due"]').val()) {
@@ -212,8 +184,8 @@ $(document).ready(function () {
         }
     });
 
-    $(".toggle-priority").click(function () {
-        // Cycle through priorities with flag icon
+	// Priority Picker
+	$(".toggle-priority").click(function () {
         var priority = $('[name="priority"]').val();
         if (priority == "no") {
             // If hidden input is no (default), change to next level
@@ -237,9 +209,7 @@ $(document).ready(function () {
             $(".toggle-priority").text("outlined_flag");
         }
     });
-});
 
-$(document).ready(function () {
     // AJAX new task
     $("#new-task-form").submit(function (e) {
         e.preventDefault();
@@ -271,3 +241,90 @@ $(document).ready(function () {
         });
     });
 });
+
+
+/* // Label Selector
+$(".toggle-label").click(function () {
+	$(".label-selector").fadeToggle('fast');
+
+	if ($('[name="label"]:checkbox:checked').length > 0) {
+		$(".toggle-label").css("color", "black");
+	} else {
+		$(".toggle-label").css("color", "gray");
+	}
+
+	$(".toggle-project").show();
+	if ($('[name="project"]').val() !== "Inbox") {
+		$(".toggle-project").css("color", "black");
+	} else {
+		$(".toggle-project").css("color", "gray");
+	}
+	$(".toggle-due").show();
+	if ($('[name="due"]').val()) {
+		$(".toggle-due").css("color", "black");
+	} else {
+		$(".toggle-due").css("color", "gray");
+	}
+	$('[name="due"]').hide();
+	$('[name="project"]').hide();
+}); */
+
+
+// Tooltips (new function for organization)
+$(document).ready(function(){
+	tippy('.toggle-label', {
+		content: $('.label-selector')[0].innerHTML,
+		trigger: 'click',
+		duration: '250',
+		allowHTML: true,
+		animation: 'shift-away',
+		interactive: true,
+		placement: 'bottom',
+		theme: 'custom',
+		zIndex: 10,
+		onHide: function(){
+			if ($('[name="label"]:checkbox:checked').length > 0) {
+				$(".toggle-label").css("color", "black");
+			} else {
+				$(".toggle-label").css("color", "gray");
+			}
+		}
+	})
+
+	tippy('.toggle-due', {
+		content: $('.due-selector')[0].innerHTML,
+		trigger: 'click',
+		duration: '250',
+		allowHTML: true,
+		animation: 'shift-away',
+		interactive: true,
+		placement: 'bottom',
+		theme: 'custom',
+		zIndex: 10,
+		onShown: function(){
+			$('.tippy-content .due-calendar').datepicker({
+				altField: '[name="due"]',
+				onSelect: function () {
+					if ($('[name="due"]').val()) {
+						$(".toggle-due").css("color", "black");
+						$(".toggle-due").text("event_busy");
+						$(".toggle-alert").show();
+						enableAlert();
+					} else {
+						$(".toggle-due").css("color", "gray");
+						$(".toggle-due").text("insert_invitation");
+					}
+				},
+			});
+			$(document).scrollTop($(document).scrollTop() + 1);
+			$(document).scrollTop($(document).scrollTop() - 1);
+		},
+		onHide: function(){
+			if ($('[name="label"]:checkbox:checked').length > 0) {
+				$(".toggle-label").css("color", "black");
+			} else {
+				$(".toggle-label").css("color", "gray");
+			}
+		}
+	})
+})

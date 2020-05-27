@@ -17,20 +17,26 @@ date_default_timezone_set($prefs);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <!-- PT Sans (full family) --> <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <!-- Material Icons (Sharp Theme) --> <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+ 
+    <!-- jQuery UI Default Theme --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css">
+    <!-- jQuery UI 'Base' Theme --> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/theme.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.min.css"
-        integrity="sha256-sEGfrwMkIjbgTBwGLVK38BG/XwIiNC/EAG9Rzsfda6A=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/base/theme.min.css" />
+    <!-- Stylesheet --> <link href="/static/style.css" rel="stylesheet">
 
-    <link href="/static/style.css" rel="stylesheet">
+    <!-- jQuery --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery UI --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- Tooltips --> <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Tooltip Improvements --> <script src="https://unpkg.com/tippy.js@6"></script>
+    <!-- Tooltip Animation --> <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
+    <!-- Tooltip Theme --> <link rel="stylesheet" href="/static/tooltip.css">
+    
+    <!-- Datepickr --> <script src="https://rawcdn.githack.com/RapidtSoftware/DatePickr/f4e1da62bff1df9bdb849622efca59efb0152a69/dist/js/datepickr.min.js"></script>
+    <!-- Datepickr Theme --> <link rel="stylesheet" href="https://rawcdn.githack.com/RapidtSoftware/DatePickr/f4e1da62bff1df9bdb849622efca59efb0152a69/dist/css/datepickr.min.css">
 
-    <script src="/static/javascript.js"></script>
+    <!-- JavaScript --> <script src="/static/javascript.js"></script>
 </head>
 
 <body>

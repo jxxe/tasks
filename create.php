@@ -31,7 +31,8 @@ $tasks[] = array(
     'project' => @strip_tags($data['project']), // string
     'priority' => @strip_tags($priority), // no, low, medium, high
     'id' => $id, // unique id
-    'order' => 0 // integer, starts at zero
+    'order' => 0, // integer, starts at zero
+    'link' => $data['link'],
 );
 
 echo $id;

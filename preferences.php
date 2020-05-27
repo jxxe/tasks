@@ -37,8 +37,8 @@ $prefs = json_decode($prefs, true);
     </div>
     <div class="settings-inner">
         <div class="action-buttons">
-            <a class="download-completed" href="storage/completed.json" download="completed_tasks.json"><i class="material-icons-sharp">done_all</i>Download Completed Tasks</a>
-            <a class="download-uncompleted" href="storage/tasks.json" download="uncompleted_tasks.json"><i class="material-icons-sharp">clear</i>Download Uncompleted Tasks</a>
+            <a class="download-completed" href="storage/completed.json" download="completed_tasks.json"><i class="material-icons-sharp">save_alt</i>Download Completed Tasks</a>
+            <a class="download-uncompleted" href="storage/tasks.json" download="uncompleted_tasks.json"><i class="material-icons-sharp">save_alt</i>Download Uncompleted Tasks</a>
             <a class="delete-completed" href="delete_completed.php" onclick="return confirm('Are you sure you want to delete your completed tasks?')"><i class="material-icons-sharp">delete</i>Delete <?php echo $completed_count; ?> Completed Tasks</a>
         </div>
     </div>
