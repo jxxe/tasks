@@ -1,5 +1,5 @@
 body {
-    background: var(--gray);
+    background: var(--light-gray);
 }
 
 .search,
@@ -64,7 +64,7 @@ table {
 table,
 th,
 td {
-    border: solid 1px var(--gray);
+    border: solid 1px var(--light-gray);
     border-collapse: collapse;
 }
 

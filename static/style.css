@@ -5,12 +5,16 @@
     --green: #27963f;
     --blue: #4c70f9;
     --purple: #6b36be;
-    --gray: #e7e7e7;
     --red-op: #d0413b30;
     --orange-op: #e9881c30;
     --yellow-op: #f8d02a30;
-    --dark-gray: #b0b0b0;
-    --dark-gray-op: #b0b0b030;
+
+    --gray: gray;
+
+    --medium-gray: #b0b0b0;
+    --medium-gray-op: #b0b0b030;
+    
+    --light-gray: #e7e7e7;
 
     --border: #d8d8d8;
 
@@ -84,7 +88,7 @@ body {
     font-size: 16px;
     border: none;
     outline: none;
-    background-color: var(--gray);
+    background-color: var(--light-gray);
     padding: 0 10px;
     height: 28px;
     cursor: pointer;
@@ -148,7 +152,7 @@ body {
 
 #sidebar {
     width: 200px;
-    background-color: var(--gray);
+    background-color: var(--light-gray);
     position: sticky;
     top: 52px;
     height: calc(100vh - 112px);
@@ -172,6 +176,22 @@ body {
     padding-bottom: 10px;
     border-bottom: solid 1px gray;
     cursor: pointer;
+}
+
+.inbox-button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.inbox-button i {
+    margin-right: 10px;
+}
+
+.inbox-button p {
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;
 }
 
 .projects-tab.active-tab,
@@ -218,7 +238,7 @@ body {
 }
 
 .sort-placeholder {
-    border: solid 1px var(--gray);
+    border: solid 1px var(--light-gray);
     width: 100%;
     height: 50px;
     margin-bottom: 20px;
@@ -268,12 +288,12 @@ body {
 }
 
 .task.no-priority .task-checkbox {
-    border: solid var(--checkbox-thickness) var(--dark-gray);
-    background-color: var(--dark-gray-op);
+    border: solid var(--checkbox-thickness) var(--medium-gray);
+    background-color: var(--medium-gray-op);
 }
 
 .task.no-priority .task-checkbox:hover:before {
-    color: var(--dark-gray);
+    color: var(--medium-gray);
 }
 
 .task .task-title {
@@ -314,43 +334,54 @@ body {
 .task-label.red,
 .project.red .project-icon,
 .label.red .label-icon,
-label.red {
-    color: var(--red);
+label.red,
+.color-red {
+    color: var(--red)!important;
 }
 .task-label.orange,
 .project.orange .project-icon,
 .label.orange .label-icon,
-label.orange {
-    color: var(--orange);
+label.orange,
+.color-orange {
+    color: var(--orange)!important;
 }
 .task-label.yellow,
 .project.yellow .project-icon,
 .label.yellow .label-icon,
-label.yellow {
-    color: var(--yellow);
+label.yellow,
+.color-yellow {
+    color: var(--yellow)!important;
 }
 .task-label.green,
 .project.green .project-icon,
 .label.green .label-icon,
-label.green {
-    color: var(--green);
+label.green,
+.color-green {
+    color: var(--green)!important;
 }
 .task-label.blue,
 .project.blue .project-icon,
 .label.blue .label-icon,
-label.blue {
-    color: var(--blue);
+label.blue,
+.color-blue {
+    color: var(--blue)!important;
 }
 .task-label.purple,
 .project.purple .project-icon,
 .label.purple .label-icon,
-label.purple {
-    color: var(--purple);
+label.purple,
+.color-purple {
+    color: var(--purple)!important;
 }
 .task-label.gray,
 .project.gray .project-icon,
-.label.gray .label-icon {
-    color: var(--gray);
+.label.gray .label-icon,
+.color-gray {
+    color: var(--gray)!important;
+}
+
+.color-dark-gray {
+    color: gray!important;
 }
 
 .projects-list .project:first-child,
@@ -363,6 +394,47 @@ label.purple {
     display: flex;
     align-items: center;
     padding: 10px 0;
+    position: relative;
+}
+
+.projects-list .project *,
+.labels-list .label * {
+    cursor: pointer;
+}
+
+.projects-list .project:hover .delete-project,
+.labels-list .label:hover .delete-label {
+    display: block;
+}
+
+.new-project-color-outer,
+.new-label-color-outer {
+    display: none;
+}
+
+.new-project-color,
+.new-label-color {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.new-project-color li,
+.new-label-color li {
+    display: inline-block;
+}
+
+.new-project-color i,
+.new-label-color i {
+    cursor: pointer;
+}
+
+.delete-project,
+.delete-label {
+    position: absolute;
+    display: none;
+    right: 0;
+    color: gray;
 }
 
 .projects-list .project-name,
@@ -380,6 +452,11 @@ label.purple {
 .new-label {
     border-top: solid 1px var(--border);
     padding-top: 15px;
+}
+
+.new-project i,
+.new-label i {
+    cursor: pointer;
 }
 
 .new-label {
@@ -469,7 +546,7 @@ label.purple {
 #new-task [name="task"],
 #new-task [name="due"],
 #new-task [name="project"] {
-    background-color: var(--gray);
+    background-color: var(--light-gray);
     border: none;
     outline: none;
     font-family: 'PT Sans', sans-serif;
@@ -528,7 +605,7 @@ label.purple {
 
 .arrow:before {
 	border-color: rgba(231, 231, 231, 0);
-	border-bottom-color: var(--gray);
+	border-bottom-color: var(--light-gray);
 	border-width: 11.5px;
 	margin-left: -11.5px;
 }

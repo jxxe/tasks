@@ -56,7 +56,7 @@ if(!empty($_POST['id'])) {
                 $due = date('M j', strtotime($task['due']));
             }
             ?>
-            <span class="task-date<?php if(date('Ymd', strtotime($task['due'])) < date('Ymd')) { echo ' late-task'; } else if($time->days = 1) { echo ' today-task'; } ?>"><?php echo $due; ?></span>
+            <span class="task-date<?php if(date('Ymd', strtotime($task['due'])) < date('Ymd')) { echo ' late-task'; } else if($time->days == 1) { echo ' today-task'; } ?>"><?php echo $due; ?></span>
             <?php if($task['alert'] == 'true') { ?>
             <i class="material-icons-sharp">alarm</i>
             <?php } ?>
