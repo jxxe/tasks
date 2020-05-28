@@ -166,10 +166,11 @@ $(document).ready(function () {
     $(".toggle-due").click(function () {
         if ($('[name="due"]').val()) {
             $(".toggle-due").css("color", "gray");
-            $(".toggle-due").text("insert_invitation");
+			$(".toggle-due").text("insert_invitation");
             $('[name="due"]').val("");
             disableAlert();
             $(".toggle-alert").hide();
+			$('.tippy-content .due-calendar').datepicker('setDate', null);
         } else {
             $('[name="due"]').show().focus().hide();
             $(".toggle-due").click();
@@ -327,4 +328,33 @@ $(document).ready(function(){
 			}
 		}
 	})
+})
+
+$(document).ready(function(){
+	// Create Label
+	$("#new-label-form").submit(function (e) {
+		e.preventDefault();
+		var form = $(this);
+		$.ajax({
+			type: "POST",
+			url: "create_label.php",
+			data: form.serialize(),
+			success: function (msg) {
+				var id = msg;
+				$.ajax({
+					method: "POST",
+					data: {
+						id: id,
+						type: 'labels'
+					},
+					url: "display_taxonomies.php",
+					success: function (response) {
+						$(".labels-list").prepend(response);
+						$("#new-task-form").trigger("reset");
+						$('[data-label-id="' + id + '"]').slideDown("fast");
+					},
+				});
+			},
+		});
+	});
 })

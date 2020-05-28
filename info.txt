@@ -9,3 +9,5 @@ Green: #27963f
 Blue: #4c70f9
 Purple: #6b36be
 Gray: #e7e7e7
+
+(7 options)
