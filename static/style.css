@@ -98,26 +98,11 @@ body {
     cursor: text;
 }
 
-#account-menu {
+.account-menu-outer {
     background-color: black;
     padding: 10px;
     width: fit-content;
-    position: absolute;
-    right: 8px;
-    margin-top: 16px;
     display: none;
-}
-
-#account-menu:before {
-    position: absolute;
-    right: 0;
-    top: -13px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 0 15px 15px;
-    border-color: transparent transparent #000000 transparent;
-    content: '';
 }
 
 #account-menu ul {
@@ -129,11 +114,11 @@ body {
     padding: 0;
     list-style: none;
     font-family: 'PT Sans', sans-serif;
-    color: white;
+    color: black;
 }
 
 #account-menu ul li > a {
-    color: white;
+    color: black;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -142,6 +127,7 @@ body {
 #account-menu ul li a i {
     padding-right: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 #main {
@@ -544,8 +530,7 @@ label.purple,
 }
 
 #new-task [name="task"],
-#new-task [name="due"],
-#new-task [name="project"] {
+#new-task [name="due"] {
     background-color: var(--light-gray);
     border: none;
     outline: none;
@@ -556,14 +541,9 @@ label.purple,
     cursor: pointer;
 }
 
-#new-task [name="project"],
-#new-task [name="due"] {
+#new-task [name="due"],
+.project-selector {
     display: none;
-}
-
-#new-task [name="project"] {
-    -webkit-appearance: none;
-    border-radius: 0;
 }
 
 .label-selector,

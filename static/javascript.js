@@ -14,6 +14,7 @@ function disableAlert() {
 	$('[name="alert"]').val("false");
 }
 
+// Update Settings
 $('#settings .settings-inner form').change(function(){
 	$.ajax({
 		url: 'update_preferences.php',
@@ -25,6 +26,7 @@ $('#settings .settings-inner form').change(function(){
 	})
 })
 
+// Replace Search with New Task
 $(".search").click(function () {
 	if ($(document).scrollTop() > 100) {
 		$("html, body").animate({ scrollTop: 0 }, "fast");
@@ -48,10 +50,20 @@ $(document).scroll(function () {
 	}
 });
 
-$(".avatar").click(function () {
-	$("#account-menu").toggle();
-});
+// Account Menu
+tippy('.avatar', {
+	content: $('.account-menu-outer').html(),
+	trigger: 'click',
+	duration: '250',
+	allowHTML: true,
+	animation: 'shift-away',
+	interactive: true,
+	placement: 'bottom-end',
+	theme: 'custom',
+	zIndex: 101
+})
 
+// Switch Between Projects & Labels
 $(".projects-tab").click(function () {
 	$(this).addClass("active-tab");
 	$(".labels-tab").removeClass("active-tab");
@@ -73,11 +85,8 @@ $(".labels-tab").click(function () {
 	$(".new-label").show();
 });
 
+// Show/Hide Sidebar on Mobile
 $(".logo.menu").click(function () {
-	$(".sidebar-outer").toggleClass("sidebar-shown");
-});
-
-$("#tasks").click(function () {
 	$(".sidebar-outer").toggleClass("sidebar-shown");
 });
 
@@ -87,6 +96,7 @@ $(window).resize(function () {
 	}
 });
 
+// Reorder Tasks
 $("#tasks").sortable({
 	// Make task list draggable
 	handle: $(".sort-handle"), // Only drag by handle
@@ -134,33 +144,30 @@ $("#tasks").on("click", ".task .task-checkbox", function () {
 
 /* NEW TASK FORM */
 
+// Project Selector
+tippy('.toggle-project', {
+	content: $('.project-selector').html(),
+	trigger: 'click',
+	duration: '250',
+	allowHTML: true,
+	animation: 'shift-away',
+	interactive: true,
+	placement: 'bottom',
+	theme: 'custom',
+	zIndex: 10,
+	onHide: function(){
+		if($([name="project"]).val() !== 'inbox') {
+			$('.toggle-project').css('color', 'black');
+		} else {
+			$('.toggle-project').css('color', 'gray');
+		}
+	}
+});
+
 // Show meta buttons
 $('[name="task"]').click(function () {
 	$("#new-task .new-bottom").addClass("shown");
 });
-
-// Project Selector
-$(".toggle-project").click(function () {
-	$(this).hide();
-	$('[name="project"]').show();
-
-	$(".toggle-due").show();
-	if ($('[name="due"]').val()) {
-		$(".toggle-due").css("color", "black");
-	} else {
-		$(".toggle-due").css("color", "gray");
-	}
-	if ($('[name="label"]:checkbox:checked').length > 0) {
-		$(".toggle-label").css("color", "black");
-	} else {
-		$(".toggle-label").css("color", "gray");
-	}
-	$('[name="due"]').hide();
-
-	$(".label-selector").hide();
-});
-
-
 
 $(".toggle-due").click(function () {
 	if ($('[name="due"]').val()) {
@@ -464,7 +471,5 @@ $('body').on('click', '.delete-label', function(){
 		}
 	})
 })
-
-
 
 })

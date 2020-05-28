@@ -28,13 +28,10 @@ date_default_timezone_set($prefs);
     <!-- jQuery --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- jQuery UI --> <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-    <!-- Tooltips --> <script src="https://unpkg.com/@popperjs/core@2"></script>
-    <!-- Tooltip Improvements --> <script src="https://unpkg.com/tippy.js@6"></script>
-    <!-- Tooltip Animation --> <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
-    <!-- Tooltip Theme --> <link rel="stylesheet" href="/static/tooltip.css">
-    
-    <!-- Datepickr --> <script src="https://rawcdn.githack.com/RapidtSoftware/DatePickr/f4e1da62bff1df9bdb849622efca59efb0152a69/dist/js/datepickr.min.js"></script>
-    <!-- Datepickr Theme --> <link rel="stylesheet" href="https://rawcdn.githack.com/RapidtSoftware/DatePickr/f4e1da62bff1df9bdb849622efca59efb0152a69/dist/css/datepickr.min.css">
+    <!-- Popper.js --> <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <!-- Tippy.js --> <script src="https://unpkg.com/tippy.js@6"></script>
+    <!-- Tippy.js Animation --> <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
+    <!-- Tippy.js Custom Theme --> <link rel="stylesheet" href="/static/tooltip.css">
 
     <!-- JavaScript --> <script src="/static/javascript.js"></script>
 </head>
@@ -55,13 +52,15 @@ date_default_timezone_set($prefs);
                 </form>
             </div>
             <div class="header-right">
-                <img class="avatar" data-tooltip-content="#account-menu" src="/assets/avatar.jpeg">
-                <div id="account-menu">
-                    <ul>
-                        <li><a href="/preferences.php"><i class="material-icons-sharp">settings</i>Preferences</a></li>
-                        <li><a href=""><i class="material-icons-sharp">bar_chart</i>Statistics</a></li>
-                        <li><a href=""><i class="material-icons-sharp">exit_to_app</i>Logout</a></li>
-                    </ul>
+                <img class="avatar" src="/assets/avatar.jpeg">
+                <div class="account-menu-outer">
+                    <div id="account-menu">
+                        <ul>
+                            <li><a href="/preferences.php"><i class="material-icons-sharp">settings</i>Preferences</a></li>
+                            <li><a href=""><i class="material-icons-sharp">bar_chart</i>Statistics</a></li>
+                            <li><a href=""><i class="material-icons-sharp">exit_to_app</i>Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

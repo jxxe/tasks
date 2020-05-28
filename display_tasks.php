@@ -7,6 +7,9 @@ date_default_timezone_set($timezone);
 $tasks = file_get_contents('storage/tasks.json');
 $tasks = json_decode($tasks, true);
 
+$labels = file_get_contents('storage/labels.json');
+$labels = json_decode($labels, true);
+
 if(!empty($_POST['id'])) {
     foreach($tasks as $key => $task) {
         if($task['id'] == $_POST['id']) {
@@ -64,7 +67,12 @@ if(!empty($_POST['id'])) {
             <?php if(!empty($task['labels'])) { ?>
             <div class="task-labels">
                 <?php foreach($task['labels'] as $label) { ?>
-                <span class="task-label"><?php echo $label ?></span>
+                    <?php foreach($labels as $label2) {
+                        if($label['id'] == $label2['id']) { ?>
+                            <span class="task-label color-<?php echo $label2['color']; ?>"><?php echo $label2['name'] ?></span>
+                        <?php break;
+                        }
+                    } ?>
                 <?php } ?>
             </div>
             <?php } ?>

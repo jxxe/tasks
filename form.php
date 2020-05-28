@@ -1,3 +1,11 @@
+<?php
+$labels = file_get_contents('storage/labels.json');
+$labels = json_decode($labels, true);
+
+$projects = file_get_contents('storage/projects.json');
+$projects = json_decode($projects, true);
+?>
+
 <section id="new-task">
     <form action="create.php" id="new-task-form" method="POST">
         <div class="new-top">
@@ -19,24 +27,30 @@
                 
                 <i class="material-icons-sharp toggle-label" data-tooltip-content=".label-selector">local_offer</i>
                 <div class="label-selector">
+                    <?php foreach($labels as $label) { ?>
                     <div class="label-select">
-                        <i class="material-icons-sharp">local_offer</i>
-                        <label for="2347" class="red">Label number one</label>
-                        <input type="checkbox" name="label" id="2347">
+                        <i class="material-icons-sharp color-<?php echo $label['color'] ?>">local_offer</i>
+                        <label for="<?php echo $label['id']; ?>"><?php echo $label['name']; ?></label>
+                        <input type="checkbox" name="label[]" id="<?php echo $label['id']; ?>" value="<?php $label['id']; ?>">
                     </div>
-                    <div class="label-select">
-                        <i class="material-icons-sharp">local_offer</i>
-                        <label for="1234" class="orange">Second label</label>
-                        <input type="checkbox" name="label" id="1234">
-                    </div>
+                    <?php } ?>
                 </div>
                 
                 <i class="material-icons-sharp toggle-project">inbox</i>
-                <select name="project">
-                    <option val="inbox" selected>Inbox</option>
-                    <option val="82934">Testing project</option>
-                    <option val="23454">Second project</option>
-                </select>
+                <div class="project-selector">
+                    <div class="label-select">
+                        <i class="material-icons-sharp" style="color:black;">inbox</i>
+                        <label for="inbox">Inbox</label>
+                        <input type="radio" name="project" id="inbox" value="inbox">
+                    </div>
+                    <?php foreach($projects as $project) { ?>
+                    <div class="label-select">
+                        <i class="material-icons-sharp color-<?php echo $label['color'] ?>">inbox</i>
+                        <label for="<?php echo $project['id']; ?>"><?php echo $project['name']; ?></label>
+                        <input type="radio" name="project" id="<?php echo $project['id']; ?>" value="<?php $project['id']; ?>">
+                    </div>
+                    <?php } ?>
+                </div>
                 
                 <i class="material-icons-sharp toggle-link">insert_link</i>
                 <input type="hidden" name="link" value="null">
